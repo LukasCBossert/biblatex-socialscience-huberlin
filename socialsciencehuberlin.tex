@@ -1,9 +1,4 @@
-% !TEX output-directory = aux
-% !TEX TS-program = lualatex
-% !TEX encoding = UTF-8
-% !TEX spellcheck
-
-% biblatex-socialscience-huberlin --%
+% biblatex-socialscience|huberlin --%
 % Copyright (c) 2018 and
 % maintained by Lukas C. Bossert
 %  
@@ -19,7 +14,7 @@
 % The code of this documentation     %
 % has been taken form 'biblatex-ext' %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+ 
 \documentclass[DIV=11]{scrartcl}
 \usepackage{ifxetex,ifluatex}
 \newif\iffontspec
@@ -84,7 +79,7 @@
 ]{scrlayer-scrpage} 
 \pagestyle{scrheadings}
 \clearscrheadfoot
-\rohead{\texttt{bib}\LaTeX-style \texttt{socialscience-huberlin \edtoversionblx}}%
+\rohead{\texttt{bib}\LaTeX-style \texttt{socialscience|huberlin \socialsciencehuberlinversion}}%
 \lohead{\copyright\ by Lukas C. Bossert}
 \rofoot{\normalfont\footnotesize  \textbf{\sffamily \thepage}}
 \lofoot{\normalfont\footnotesize  \href{http://digitales-altertum.de}{digitales-altertum|de}}
@@ -101,18 +96,6 @@
 \AtBeginDocument{\setlength{\normalparindent}{\parindent}}
  \setfootnoterule{0pt}% Kein Fußnotenstrich
  %\setfootnoterule[<height>]{<length>}
-
-% \DeclareBibliographyCategory{ancient}
-% \DeclareBibliographyCategory{frgancient}
-% \DeclareBibliographyCategory{corpus}
-% \DeclareBibliographyCategory{uniqueme}
-% \DeclareBibliographyCategory{serieseditor}
-
-% \addtocategory{ancient}{Cic:Tusc,Plut:Timaios,Plotin}
-% \addtocategory{frgancient}{Cato:frg}
-% \addtocategory{corpus}{CIL}
-% \addtocategory{uniqueme}{Prokl:Diehl,Prokl:Dodds,Prokl:Saffrey}
-% \addtocategory{serieseditor}{Defaux2017}
 
 \makeatletter
 \iffontspec
@@ -228,8 +211,6 @@
   %listing style = extblxstylebibtex,
   #1}
 
-\newrobustcmd\edtobibexamplefile[1]{%
-\inputexamplebibfile[listing options={style = extblxstylebibtex,linerange={#1}}]{editiontopoi-examples.bib}}
 
 
 
@@ -485,7 +466,6 @@ This style is maintained by Lukas C. Bossert (\textcopyright 2018).
 For a general introduction to \sty{biblatex} see its documentation available on \mkbibacro{CTAN}\fnurl{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf},
 or have a look at the short \sty{biblatex}-tutorial by Paul Stanley\fnurl{https://github.com/PaulStanley/biblatex-tutorial/releases/download/0.2/biblatex-tutorial.pdf}. 
 
-\subsection{General remarks on the style}
 
 
 \section{Bibliography examples}
