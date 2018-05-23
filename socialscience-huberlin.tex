@@ -1,19 +1,9 @@
 \documentclass[%
+  english,ngerman
 ]{scrbook}%
 
-\usepackage[english,ngerman]{babel}
-\usepackage[					% clean thesis style
-	figuresep=colon,%
-	sansserif=false,%
-	hangfigurecaption=false,%
-	hangsection=true,%
-	hangsubsection=true,%
-	colorize=full,%
-	colortheme=bluemagenta,%
-	% bibsys=bibtex,%
-	% bibfile=bib-refs,%
-	% bibstyle=alphabetic,%
-]{cleanthesis}
+\usepackage{babel}
+\usepackage{cleanthesis} % modified
 
 \usepackage{filecontents}
 \begin{filecontents*}{\jobname.bib}
@@ -54,22 +44,21 @@
   style=ext-authoryear,
   innamebeforetitle=true,
   ]{biblatex}
+
 \DeclareFieldFormat{postnote}{\mknormrange{#1}} %biblatex 3.11
 \DeclareFieldFormat{multipostnote}{\mknormrange{#1}}%biblatex 3.11
-
-% \DeclareFieldFormat{date}{#1\iffieldundef{origdate}{}{\addspace\mkbibbrackets{\thefield{origdate}}}}
-
-\DeclareFieldFormat{bibcitelabel}{\mkbibbold{#1}}
-\DeclareFieldFormat{editortype}{\mkbibparens{#1}\addcomma}
+\DeclareFieldFormat{biblabeldate}{#1\iffieldundef{origyear}{}{\addspace\mkbibbrackets{\thefield{origyear}}}} % bad coding 
+\DeclareFieldFormat{editortype}{\mkbibparens{#1}\addcomma} % bad coding as well
 \DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
- \DeclareFieldFormat*{title}{#1}
- \DeclareFieldFormat[book]{title}{\mkbibemph{#1}}
-% \DeclareFieldFormat{subtitle}{#1}
- % \DeclareFieldFormat{booktitle}{#1}% \DeclareFieldFormat{origdate}{\mkbibbrackets{#1}}
+\DeclareFieldFormat*{title}{#1}
+\DeclareFieldFormat[book]{title}{\mkbibemph{#1}}
+
 
 \renewcommand*{\labelnamepunct}{\addcolon\space}
 \renewcommand*{\volnumdelim}{\space}
 \renewcommand{\postnotedelim}{\addcolon}
+
+
 \DefineBibliographyStrings{ngerman}{%
 	editor = {{Hg\adddot}},
 }
