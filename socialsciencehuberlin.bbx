@@ -1,51 +1,33 @@
-\documentclass[%
-  english,ngerman
-]{scrbook}%
+% socialscience|huberlin --%
+% Copyright (c) 2018 Lukas C. Bossert 
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+% http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+\def\sshu@date{2018/05/23}
+\def\sshu@version{0.0.1}
+\def\sshu@bbxid{\sshu@date\space v\sshu@version\space biblatex-socialscience|huberlin bibliography style (LCB)}
+\def\sshu@cbxid{\sshu@date\space v\sshu@version\space biblatex-socialscience|huberlin citation style (LCB)}
+\def\sshu@lbxid{\sshu@date\space v\sshu@version\space biblatex-socialscience|huberlin localization (LCB)}
 
-\usepackage{babel}
-\usepackage{cleanthesis} % modified
-\usepackage{url}
-  \urlstyle{same}
-
-\usepackage{filecontents}
-\begin{filecontents*}{\jobname.bib}
-	@InCollection{DelPercio2014,
-  author    = {Del Percio, Alfonso and Reisigl, Martin},
-  title     = {Angewandte Diskursforschung},
-  booktitle = {Diskursforschung - Ein interdisziplinäres Handbuch},
-  publisher = {transcript Verlag},
-  isbn      = {9783839427224},
-  date      = {2014},
-  location  = {Bielefeld},
+\ProvidesFile{socialsciencehuberlin.bbx}[\sshu@bbxid]
+\RequireBibliographyStyle{ext-authoryear}
+\AtBeginDocument{%
+  \urlstyle{same}%
+  \typeout{* * * socialscience|huberlin * * *}
 }
+%\RequirePackage{csquotes} % optionclash
+\def\socialsciencehuberlinversion{\sshu@version}
+\def\socialsciencehuberlindate{\sshu@date}
 
-@InCollection{Angermuller2014c,
-  author    = {Angermuller, Johannes and Macgilchrist, Felicitas},
-  title     = {Einleitung: Konzepte und Kontroversen der Diskurstheorie},
-  booktitle = {Diskursforschung: ein interdisziplinäres Handbuch},
-  editor = {Hans Wurst and Mickey Mouse},
-  publisher = {transcript Verlag},
-  pages     = {17--20},
-  date      = {2014},
-  origdate  = {1999}, 
-  location  = {Bielefeld},
-}
-
-@Book{Motakef2015,
-  title     = {Prekarisierung},
-  publisher = {transcript Verlag},
-  author    = {Motakef, Mona},
-  isbn      = {978-3-8376-2566-0},
-  date      = {2015},
-  location  = {Bielefeld},
-  url       = {http://www.transcript-verlag.de/978-3-8376-2566-0/prekarisierung},
-}
-\end{filecontents*}
-\usepackage[
-  backend=biber,
-  style=ext-authoryear,
+\ExecuteBibliographyOptions{%
   innamebeforetitle=true,
-  ]{biblatex}
+}
+%-----------------------
 
 \DeclareFieldFormat{pages}{#1}
 \DeclareFieldFormat{postnote}{\mknormrange{#1}}
@@ -66,13 +48,16 @@
 \renewcommand*{\volnumdelim}{\space}
 \renewcommand{\postnotedelim}{\addcolon\space}
 
+ \AtEveryBibitem{\clearfield{isbn}}
 
-\DefineBibliographyStrings{ngerman}{%
-	editor = {{Hg\adddot}},
-	editors = {{Hg\adddot}},
-} 
 
-\makeatletter
+\DeclareRedundantLanguages{german}{german,ngerman,austrian,naustrian}
+\DeclareRedundantLanguages{english,american}{english,american,british,%
+ canadian,australian,newzealand,USenglish,UKenglish}
+\DeclareLanguageMapping{german}{german-socialscience|huberlin}
+
+
+
 \renewbibmacro*{date+extradate}{%
   \iffieldundef{labelyear}
     {}
@@ -83,7 +68,7 @@
      \iffieldequalstr{labeldatesource}{orig}
        {}
        {\printorigdate}}}
-\makeatother
+
 
 % https://tex.stackexchange.com/a/364192/98739
 \DeclareNameFormat{colour-family-given}{%
@@ -130,13 +115,4 @@
 \DeclareNameAlias{sortname}{colour-family-given}
 
 
-\addbibresource{\jobname.bib}
-\addbibresource{biblatex-examples.bib}
-\begin{document}
-\nocite{*}
-\chapter{Titel}
-\autocite[23-44]{Motakef2015}
-\autocite[19\psq]{Angermuller2014c}
-\autocite[123]{DelPercio2014}
-\printbibliography
-\end{document}
+\endinput
