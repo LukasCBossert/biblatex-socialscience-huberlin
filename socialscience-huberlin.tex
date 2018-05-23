@@ -6,6 +6,7 @@
 \usepackage{cleanthesis} % modified
 \usepackage{url}
   \urlstyle{same}
+
 \usepackage{filecontents}
 \begin{filecontents*}{\jobname.bib}
 	@InCollection{DelPercio2014,
@@ -22,7 +23,7 @@
   author    = {Angermuller, Johannes and Macgilchrist, Felicitas},
   title     = {Einleitung: Konzepte und Kontroversen der Diskurstheorie},
   booktitle = {Diskursforschung: ein interdisziplinäres Handbuch},
-  editor = {Hans Wurst},
+  editor = {Hans Wurst and Mickey Mouse},
   publisher = {transcript Verlag},
   pages     = {17--20},
   date      = {2014},
@@ -47,12 +48,12 @@
   ]{biblatex}
 
 \DeclareFieldFormat{pages}{#1}
-\DeclareFieldFormat{postnote}{\mknormrange{#1}} %biblatex 3.11
-\DeclareFieldFormat{multipostnote}{\mknormrange{#1}}%biblatex 3.11
-\DeclareFieldFormat{biblabeldate}{#1} % bad coding 
-% \DeclareFieldFormat{biblabeldate}{#1\iffieldundef{origyear}{}{\addspace\mkbibbrackets{\thefield{origyear}}}} % bad coding 
+\DeclareFieldFormat{postnote}{\mknormrange{#1}}
+\DeclareFieldFormat{multipostnote}{\mknormrange{#1}}
+\DeclareFieldFormat{biblabeldate}{#1} 
 \DeclareFieldFormat{origdate}{\mkbibbrackets{#1}}
 \DeclareFieldFormat{editortype}{\mkbibparens{#1}} 
+\DeclareDelimFormat{editortypedelim}{\addspace} 
 \DeclareDelimFormat[bib,biblist]{innametitledelim}{\addcomma\space}
 \DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
 \DeclareFieldFormat*{title}{#1}
@@ -68,7 +69,8 @@
 
 \DefineBibliographyStrings{ngerman}{%
 	editor = {{Hg\adddot}},
-}
+	editors = {{Hg\adddot}},
+} 
 
 \makeatletter
 \renewbibmacro*{date+extradate}{%
@@ -126,7 +128,6 @@
        \ifdefvoid{#3}{}{\bibnamedelimd\mkbibnameprefix{#3}\isdot}}}}
 
 \DeclareNameAlias{sortname}{colour-family-given}
-
 
 
 \addbibresource{\jobname.bib}
