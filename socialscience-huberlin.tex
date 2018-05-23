@@ -4,7 +4,8 @@
 
 \usepackage{babel}
 \usepackage{cleanthesis} % modified
-
+\usepackage{url}
+  \urlstyle{same}
 \usepackage{filecontents}
 \begin{filecontents*}{\jobname.bib}
 	@InCollection{DelPercio2014,
@@ -131,8 +132,8 @@
 \addbibresource{\jobname.bib}
 \begin{document}
 \chapter{Titel}
-\footcite[23-44]{Motakef2015}
-\footcite[19\psq]{Angermuller2014c}
-\footcite[123]{DelPercio2014}
+\autocite[23-44]{Motakef2015}
+\autocite[19\psq]{Angermuller2014c}
+\autocite[123]{DelPercio2014}
 \printbibliography
 \end{document}
