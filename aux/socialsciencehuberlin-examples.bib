@@ -1,15 +1,4 @@
-\documentclass[%
-  english,ngerman
-]{scrbook}%
-
-\usepackage{babel}
-\usepackage{cleanthesis} % modified
-\usepackage{url}
- % \urlstyle{same}
-  
-\usepackage{filecontents}
-\begin{filecontents*}{socialsciencehuberlin-examples.bib}
-	@InCollection{DelPercio2014,
+ @InCollection{DelPercio2014,
   author    = {Del Percio, Alfonso and Reisigl, Martin},
   title     = {Angewandte Diskursforschung},
   booktitle = {Diskursforschung - Ein interdisziplinäres Handbuch},
@@ -27,7 +16,7 @@
   publisher = {transcript Verlag},
   pages     = {17--20},
   date      = {2014},
-  origdate  = {1999}, 
+  origdate  = {1999},
   location  = {Bielefeld},
 }
 
@@ -40,19 +29,3 @@
   location  = {Bielefeld},
   url       = {http://www.transcript-verlag.de/978-3-8376-2566-0/prekarisierung},
 }
-\end{filecontents*}
-\usepackage[
-  backend=biber,
-  style=socialsciencehuberlin
-  ]{biblatex}
-
-\addbibresource{socialsciencehuberlin-examples.bib}
-\addbibresource{biblatex-examples.bib}
-\begin{document}
-\nocite{*}
-\chapter{Titel}
-\autocite[23-44]{Motakef2015}
-\autocite[19\psq]{Angermuller2014c}
-\autocite[123]{DelPercio2014}
-\printbibliography
-\end{document}
