@@ -45,14 +45,20 @@
   innamebeforetitle=true,
   ]{biblatex}
 
+\DeclareFieldFormat{pages}{#1}
 \DeclareFieldFormat{postnote}{\mknormrange{#1}} %biblatex 3.11
 \DeclareFieldFormat{multipostnote}{\mknormrange{#1}}%biblatex 3.11
-\DeclareFieldFormat{biblabeldate}{#1\iffieldundef{origyear}{}{\addspace\mkbibbrackets{\thefield{origyear}}}} % bad coding 
-\DeclareFieldFormat{editortype}{\mkbibparens{#1}\addcomma} % bad coding as well
+\DeclareFieldFormat{biblabeldate}{#1} % bad coding 
+% \DeclareFieldFormat{biblabeldate}{#1\iffieldundef{origyear}{}{\addspace\mkbibbrackets{\thefield{origyear}}}} % bad coding 
+\DeclareFieldFormat{origdate}{\mkbibbrackets{#1}}
+\DeclareFieldFormat{editortype}{\mkbibparens{#1}} 
+\DeclareDelimFormat[bib,biblist]{innametitledelim}{\addcomma\space}
 \DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
 \DeclareFieldFormat*{title}{#1}
 \DeclareFieldFormat[book]{title}{\mkbibemph{#1}}
 
+\newcommand{\sshuberlincolor}[2]{\definecolor{sshuberlincolor}{#1}{#2}}
+\sshuberlincolor{cmyk}{1, .50, .10, .01}%cthesissetcolorbluemagenta
 
 \renewcommand*{\labelnamepunct}{\addcolon\space}
 \renewcommand*{\volnumdelim}{\space}
@@ -62,6 +68,64 @@
 \DefineBibliographyStrings{ngerman}{%
 	editor = {{Hg\adddot}},
 }
+
+\makeatletter
+\renewbibmacro*{date+extradate}{%
+  \iffieldundef{labelyear}
+    {}
+    {\printtext[\blx@delimcontext labeldate]{%
+       \iflabeldateisdate
+         {\printdateextra}
+         {\printlabeldateextra}}
+     \iffieldequalstr{labeldatesource}{orig}
+       {}
+       {\printorigdate}}}
+\makeatother
+
+% https://tex.stackexchange.com/a/364192/98739
+\DeclareNameFormat{colour-family-given}{%
+  \ifgiveninits
+    {\usebibmacro{name:colour:family-given}
+      {\namepartfamily}
+      {\namepartgiveni}
+      {\namepartprefix}
+      {\namepartsuffix}}
+    {\usebibmacro{name:colour:family-given}
+      {\namepartfamily}
+      {\namepartgiven}
+      {\namepartprefix}
+      {\namepartsuffix}}%
+  \usebibmacro{name:andothers}}
+
+\newbibmacro*{name:colour:family-given}[4]{%
+  \ifuseprefix
+    {\usebibmacro{name:delim}{#3#1}%
+     \usebibmacro{name:hook}{#3#1}%
+     \textcolor{red}{%
+       \ifdefvoid{#3}{}{%
+         \ifcapital
+           {\mkbibnameprefix{\MakeCapital{#3}}\isdot}
+           {\mkbibnameprefix{#3}\isdot}%
+         \ifprefchar{}{\bibnamedelimc}}%
+       \mkbibnamefamily{#1}\isdot 
+       \ifdefvoid{#4}{}{\bibnamedelimd\mkbibnamesuffix{#4}\isdot}%
+       \ifdefvoid{#2}{}{\revsdnamepunct\bibnamedelimd\mkbibnamegiven{#2}\isdot}}}
+    {\usebibmacro{name:delim}{#1}%
+     \usebibmacro{name:hook}{#1}%
+     \textcolor{sshuberlincolor}{%
+       \mkbibnamefamily{#1}\isdot
+       \ifdefvoid{#4}{}{\bibnamedelimd\mkbibnamesuffix{#4}\isdot}%
+       \ifboolexpe{%
+         test {\ifdefvoid{#2}}
+         and
+         test {\ifdefvoid{#3}}}
+         {}
+         {\revsdnamepunct}%  
+       \ifdefvoid{#2}{}{\bibnamedelimd\mkbibnamegiven{#2}\isdot}%
+       \ifdefvoid{#3}{}{\bibnamedelimd\mkbibnameprefix{#3}\isdot}}}}
+
+\DeclareNameAlias{sortname}{colour-family-given}
+
 
 
 \addbibresource{\jobname.bib}
