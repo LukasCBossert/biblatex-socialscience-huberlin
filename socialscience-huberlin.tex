@@ -1,0 +1,85 @@
+\documentclass[%
+]{scrbook}%
+
+\usepackage[english,ngerman]{babel}
+\usepackage[					% clean thesis style
+	figuresep=colon,%
+	sansserif=false,%
+	hangfigurecaption=false,%
+	hangsection=true,%
+	hangsubsection=true,%
+	colorize=full,%
+	colortheme=bluemagenta,%
+	% bibsys=bibtex,%
+	% bibfile=bib-refs,%
+	% bibstyle=alphabetic,%
+]{cleanthesis}
+
+\usepackage{filecontents}
+\begin{filecontents*}{\jobname.bib}
+	@InCollection{DelPercio2014,
+  author    = {Del Percio, Alfonso and Reisigl, Martin},
+  title     = {Angewandte Diskursforschung},
+  booktitle = {Diskursforschung - Ein interdisziplinäres Handbuch},
+  publisher = {transcript Verlag},
+  isbn      = {9783839427224},
+  date      = {2014},
+  location  = {Bielefeld},
+}
+
+@InCollection{Angermuller2014c,
+  author    = {Angermuller, Johannes and Macgilchrist, Felicitas},
+  title     = {Einleitung: Konzepte und Kontroversen der Diskurstheorie},
+  booktitle = {Diskursforschung: ein interdisziplinäres Handbuch},
+  editor = {Hans Wurst},
+  publisher = {transcript Verlag},
+  pages     = {17--20},
+  date      = {2014},
+  origdate  = {1999}, 
+  location  = {Bielefeld},
+}
+
+@Book{Motakef2015,
+  title     = {Prekarisierung},
+  publisher = {transcript Verlag},
+  author    = {Motakef, Mona},
+  isbn      = {978-3-8376-2566-0},
+  date      = {2015},
+  location  = {Bielefeld},
+  url       = {http://www.transcript-verlag.de/978-3-8376-2566-0/prekarisierung},
+}
+\end{filecontents*}
+\usepackage[
+  backend=biber,
+  style=ext-authoryear,
+  innamebeforetitle=true,
+  ]{biblatex}
+\DeclareFieldFormat{postnote}{\mknormrange{#1}} %biblatex 3.11
+\DeclareFieldFormat{multipostnote}{\mknormrange{#1}}%biblatex 3.11
+
+% \DeclareFieldFormat{date}{#1\iffieldundef{origdate}{}{\addspace\mkbibbrackets{\thefield{origdate}}}}
+
+\DeclareFieldFormat{bibcitelabel}{\mkbibbold{#1}}
+\DeclareFieldFormat{editortype}{\mkbibparens{#1}\addcomma}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+ \DeclareFieldFormat*{title}{#1}
+ \DeclareFieldFormat[book]{title}{\mkbibemph{#1}}
+% \DeclareFieldFormat{subtitle}{#1}
+ % \DeclareFieldFormat{booktitle}{#1}% \DeclareFieldFormat{origdate}{\mkbibbrackets{#1}}
+
+\renewcommand*{\labelnamepunct}{\addcolon\space}
+\renewcommand*{\volnumdelim}{\space}
+\renewcommand{\postnotedelim}{\addcolon}
+\DefineBibliographyStrings{ngerman}{%
+	editor = {{Hg\adddot}},
+}
+
+
+\addbibresource{\jobname.bib}
+\begin{document}
+\chapter{Titel}
+\footcite[23-44]{Motakef2015}
+\footcite[19\psq]{Angermuller2014c}
+\footcite[123]{DelPercio2014}
+\printbibliography
+\end{document}
