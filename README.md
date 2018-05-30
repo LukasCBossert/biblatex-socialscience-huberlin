@@ -1,9 +1,9 @@
-biblatex-socialscience-huberlin    
+biblatex-socialscienceshuberlin    
 ======= 
 
 bibLaTeX-style for the social sciences at the Humboldt-Universität zu Berlin
 ---
-_2018/XX/XX v0.0.1_
+_2018/05/24 v0.0.1_
 
 
 
@@ -16,16 +16,19 @@ This style contains:
 
 documentation:
 
-- biblatex-socialscience-huberlin.pdf
-- biblatex-socialscience-huberlin.tex
-<!-- 
+- socialscienceshuberlin.pdf
+- socialscienceshuberlin.tex
+
+
 mandatory:
 
-* archaeologie.cbx
-* archaeologie.bbx
-* archaeologie.dbx -->
+* socialscienceshuberlin.cbx
+* socialscienceshuberlin.bbx
+* german-socialscienceshuberlin.lbx
 
+optional:
 
+* socialscienceshuberlin-examples.bib
 
 # Changelog
 

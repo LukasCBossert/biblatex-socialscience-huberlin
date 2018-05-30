@@ -1,4 +1,4 @@
-% biblatex-socialscience|huberlin --%
+% biblatex-socialsciences|huberlin --%
 % Copyright (c) 2018 and
 % maintained by Lukas C. Bossert
 %  
@@ -68,8 +68,8 @@
 \usepackage[svgnames]{xcolor}
 \usepackage[listings, breakable, skins]{tcolorbox}%
 \usetikzlibrary{arrows.meta}
-\usepackage[style=socialsciencehuberlin, backend=biber]{biblatex}
-\addbibresource{socialsciencehuberlin-examples.bib}
+\usepackage[style=socialscienceshuberlin, backend=biber]{biblatex}
+\addbibresource{socialscienceshuberlin-examples.bib}
 
 \usepackage[ 
   headsepline, 
@@ -79,7 +79,7 @@
 ]{scrlayer-scrpage} 
 \pagestyle{scrheadings}
 \clearscrheadfoot
-\rohead{\texttt{bib}\LaTeX-style \texttt{socialscience|huberlin \socialsciencehuberlinversion}}%
+\rohead{\texttt{bib}\LaTeX-style \texttt{socialsciences|huberlin \socialscienceshuberlinversion}}%
 \lohead{\copyright\ by Lukas C. Bossert}
 \rofoot{\normalfont\footnotesize  \textbf{\sffamily \thepage}}
 \lofoot{\normalfont\footnotesize  \href{http://digitales-altertum.de}{digitales-altertum|de}}
@@ -391,24 +391,24 @@
 \renewrobustcmd*{\cmd}[1]{\sty{\textbackslash #1}}
 
 
-\newcommand*{\gitbaseurl}{https://github.com/LukasCBossert/biblatex-socialscience-huberlin}
+\newcommand*{\gitbaseurl}{https://github.com/LukasCBossert/biblatex-socialsciences-huberlin}
 \newcommand*{\biber}{Biber}
 \newcommand*{\gitissuelink}[1]{%
   \href{\gitbaseurl/issues/#1}{issue \##1 on github}}
 
 \titlepage{%
-  title    = {The \sty{biblatex-socialsciencehuberlin} style},
-  subtitle = {Style used for social science at the Humbold-Universität zu Berlin},
+  title    = {The \sty{biblatex-socialscienceshuberlin} style},
+  subtitle = {Style used for social sciences at Humbold-Universität zu Berlin},
   url      = {\gitbaseurl},
   author   = {Lukas C. Bossert},
   link     = {lukas@digitales-altertum.de},%
-  revision = {\socialsciencehuberlinversion},
-  date     = {{\socialsciencehuberlindate}},
+  revision = {\socialscienceshuberlinversion},
+  date     = {{\socialscienceshuberlindate}},
 }
 
 \hypersetup{%
-  pdftitle    = {The biblatex-'socialscience|huberlin' style},
-  pdfsubject  = {\sty{biblatex}-style 'socialscience|huberlin'},
+  pdftitle    = {The biblatex-'socialsciences|huberlin' style},
+  pdfsubject  = {\sty{biblatex}-style 'socialsciences|huberlin'},
   pdfauthor   = {Lukas C. Bossert},
   pdfkeywords = {latex, biblatex, bibtex, bibliography, references, citation},
 }
@@ -432,14 +432,14 @@
 
 \section{Introduction}\label{sec:int}
 \subsection{About}
-The \sty{biblatex-socialsciencehuberlin} style provides the citation and bibliography styles used at the Department of Social Science at the Humboldt-Universität zu Berlin.
+The \sty{biblatex-socialscienceshuberlin} style provides the citation and bibliography styles used at the Department of Social Sciences at Humboldt-Universität zu Berlin.
 
 This style is built upon \sty{biblatex-ext}\fnurl{https://ctan.org/pkg/biblatex-ext} and uses \sty{ext-authoryear} for  citations and for the bibliography.
 Several customisations have been done so far.
 
 \subsection{Installation}\label{sec:install}
 This style is available on \mkbibacro{CTAN}.%
-\fnurl{https://ctan.org/pkg/biblatex-socialsciencehuberlin}
+\fnurl{https://ctan.org/pkg/biblatex-socialscienceshuberlin}
 The current release is also available in \miktex{} and \texlive{} 2018 or
 newer.
 If at all possible you should install this style via your \tex{} distribution
@@ -466,6 +466,10 @@ This style is maintained by Lukas C. Bossert (\textcopyright 2018).
 For a general introduction to \sty{biblatex} see its documentation available on \mkbibacro{CTAN}\fnurl{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf},
 or have a look at the short \sty{biblatex}-tutorial by Paul Stanley\fnurl{https://github.com/PaulStanley/biblatex-tutorial/releases/download/0.2/biblatex-tutorial.pdf}. 
 
+% There is one option so far: You can chose whether the author’s/editor’s names are colored and you can also define the color.
+
+Note that the author’s/editor’s names are colored so far.
+This will be an option in further releases.
 
 
 \section{Bibliography examples}

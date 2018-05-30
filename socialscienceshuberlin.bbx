@@ -1,4 +1,4 @@
-% socialscience|huberlin --%
+% socialsciences|huberlin --%
 % Copyright (c) 2018 Lukas C. Bossert 
 %
 % This work may be distributed and/or modified under the
@@ -8,21 +8,21 @@
 % http://www.latex-project.org/lppl.txt
 % and version 1.3 or later is part of all distributions of LaTeX
 % version 2005/12/01 or later.
-\def\sshu@date{2018/05/23}
+\def\sshu@date{2018/05/24}
 \def\sshu@version{0.0.1}
-\def\sshu@bbxid{\sshu@date\space v\sshu@version\space biblatex-socialscience|huberlin bibliography style (LCB)}
-\def\sshu@cbxid{\sshu@date\space v\sshu@version\space biblatex-socialscience|huberlin citation style (LCB)}
-\def\sshu@lbxid{\sshu@date\space v\sshu@version\space biblatex-socialscience|huberlin localization (LCB)}
+\def\sshu@bbxid{\sshu@date\space v\sshu@version\space biblatex-socialsciences|huberlin bibliography style (LCB)}
+\def\sshu@cbxid{\sshu@date\space v\sshu@version\space biblatex-socialsciences|huberlin citation style (LCB)}
+\def\sshu@lbxid{\sshu@date\space v\sshu@version\space biblatex-socialsciences|huberlin localization (LCB)}
 
-\ProvidesFile{socialsciencehuberlin.bbx}[\sshu@bbxid]
+\ProvidesFile{socialscienceshuberlin.bbx}[\sshu@bbxid]
 \RequireBibliographyStyle{ext-authoryear}
+
 \AtBeginDocument{%
   \urlstyle{same}%
-  \typeout{* * * socialscience|huberlin * * *}
+  \typeout{* * * socialsciences|huberlin * * *}
 }
-%\RequirePackage{csquotes} % optionclash
-\def\socialsciencehuberlinversion{\sshu@version}
-\def\socialsciencehuberlindate{\sshu@date}
+\def\socialscienceshuberlinversion{\sshu@version}
+\def\socialscienceshuberlindate{\sshu@date}
 
 \ExecuteBibliographyOptions{%
   innamebeforetitle=true,
@@ -30,6 +30,10 @@
   isbn=false,
 }
 %-----------------------
+\newtoggle{bbx:colornames}
+
+\DeclareBibliographyOption{colornames}[true]{%
+ \csuse{toggle#1}{bbx:colornames}}
 
 \DeclareFieldFormat{pages}{#1}
 \DeclareFieldFormat{postnote}{\mknormrange{#1}}
@@ -43,23 +47,22 @@
 \DeclareFieldFormat*{title}{#1}
 \DeclareFieldFormat[book]{title}{\mkbibemph{#1}}
 
-\newcommand{\sshuberlincolor}[2]{\definecolor{sshuberlincolor}{#1}{#2}}
-\sshuberlincolor{cmyk}{1, .50, .10, .01}%cthesissetcolorbluemagenta
+\RequirePackage{xcolor}
+\definecolor{sshuberlincolor}{cmyk}{1, .50, .10, .01} %default
+
 
 \renewcommand*{\labelnamepunct}{\addcolon\space}
 \renewcommand*{\volnumdelim}{\space}
 \renewcommand{\postnotedelim}{\addcolon\space}
 
-% \AtEveryBibitem{\clearfield{isbn}}
-
 
 \DeclareRedundantLanguages{german}{german,ngerman,austrian,naustrian}
 \DeclareRedundantLanguages{english,american}{english,american,british,%
  canadian,australian,newzealand,USenglish,UKenglish}
-\DeclareLanguageMapping{german}{german-socialscience|huberlin}
+\DeclareLanguageMapping{german}{german-socialscienceshuberlin}
 
 
-
+% get origdates after date
 \renewbibmacro*{date+extradate}{%
   \iffieldundef{labelyear}
     {}
@@ -71,23 +74,22 @@
        {}
        {\printorigdate}}}
 
-
 % https://tex.stackexchange.com/a/364192/98739
-\DeclareNameFormat{colour-family-given}{%
+\DeclareNameFormat{color-family-given}{%
   \ifgiveninits
-    {\usebibmacro{name:colour:family-given}
+    {\usebibmacro{name:color:family-given}
       {\namepartfamily}
       {\namepartgiveni}
       {\namepartprefix}
       {\namepartsuffix}}
-    {\usebibmacro{name:colour:family-given}
+    {\usebibmacro{name:color:family-given}
       {\namepartfamily}
       {\namepartgiven}
       {\namepartprefix}
       {\namepartsuffix}}%
   \usebibmacro{name:andothers}}
 
-\newbibmacro*{name:colour:family-given}[4]{%
+\newbibmacro*{name:color:family-given}[4]{%
   \ifuseprefix
     {\usebibmacro{name:delim}{#3#1}%
      \usebibmacro{name:hook}{#3#1}%
@@ -114,7 +116,8 @@
        \ifdefvoid{#2}{}{\bibnamedelimd\mkbibnamegiven{#2}\isdot}%
        \ifdefvoid{#3}{}{\bibnamedelimd\mkbibnameprefix{#3}\isdot}}}}
 
-\DeclareNameAlias{sortname}{colour-family-given}
-
+ % {\DeclareNameAlias{sortname}{color-family-given}} %not working with parens
+\DeclareNameAlias{sortname}{color-family-given}
+  
 
 \endinput
